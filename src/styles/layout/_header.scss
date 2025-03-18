@@ -1,0 +1,64 @@
+.header {
+    .header_content-top {
+        background-image: url(../images/header/header_bg.webp);
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 10px 0;
+
+        .container {
+            display: flex;
+            align-items: center;
+            @include adaptive-value("gap", 55, 20, 1);
+
+            @include media ("<tablet") {
+                flex-direction: column;
+            }
+        }
+
+        .logo_wrap {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            width: 76px;
+            height: auto;
+        }
+
+        .header_title {
+            @include adaptive-value("font-size", 42, 24, 1);
+            font-weight: 400;
+            color: $white;
+            text-align: center;
+        }
+
+        .ua_flag {
+            width: 53px;
+            height: 36px;
+
+            @include media ("<tablet") {
+                display: none;
+            }
+        }
+    }
+
+    .header_content-bottom {
+        background-color: $blue;
+        padding: 25px;
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .menu_link {
+            color: $whiteF5;
+            font-size: 18px;
+            font-weight: 400;
+        }
+    }
+}

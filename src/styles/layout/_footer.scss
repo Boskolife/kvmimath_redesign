@@ -1,0 +1,36 @@
+.footer {
+    background-color: $blue;
+    @include adaptive-value("padding-top", 38, 25, 1);
+    @include adaptive-value("padding-bottom", 38, 25, 1);
+
+    .footer_content {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px;
+
+        p {
+            color: $white;
+            @include adaptive-value("font-size", 20, 16, 1);
+            font-weight: 700;
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            img {
+                width: 24px;
+                height: 24px;
+            }
+
+            span {
+                color: $white;
+                @include adaptive-value("font-size", 20, 16, 1);
+                text-decoration: underline;
+
+            }
+        }
+    }
+}
