@@ -1,16 +1,21 @@
 .footer {
-    background-color: $blue;
-    @include adaptive-value("padding-top", 38, 25, 1);
-    @include adaptive-value("padding-bottom", 38, 25, 1);
 
-    .footer_content {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 15px;
+    .footer_top {
+
+        background-color: $blueF7;
+        @include adaptive-value("padding-top", 38, 25, 1);
+        @include adaptive-value("padding-bottom", 38, 25, 1);
+
+        .container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
 
         p {
-            color: $white;
+            color: $blue;
             @include adaptive-value("font-size", 20, 16, 1);
             font-weight: 700;
         }
@@ -26,11 +31,74 @@
             }
 
             span {
-                color: $white;
+                color: $blue;
                 @include adaptive-value("font-size", 20, 16, 1);
                 text-decoration: underline;
 
             }
         }
     }
+
+    .footer_bottom {
+        background-color: $blue;
+        @include adaptive-value("padding-top", 50, 30, 1);
+        @include adaptive-value("padding-bottom", 50, 30, 1);
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .col_left {
+            max-width: 575px;
+            width: 100%;
+
+            p {
+                color: $white;
+                @include adaptive-value("font-size", 20, 16, 1);
+                @include adaptive-value("margin-bottom", 25, 15, 1);
+                font-weight: 700;
+                line-height: 120%;
+            }
+
+            .links_wrap {
+
+                a,
+                p {
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+
+                    img {
+                        width: 24px;
+                        height: 24px;
+                    }
+
+                    span {
+                        color: $white;
+                        @include adaptive-value("font-size", 20, 16, 1);
+                    }
+                }
+
+                a {
+                    margin-bottom: 10px;
+                }
+            }
+        }
+
+        .logo_wrap {
+            display: flex;
+            align-items: center;
+            @include adaptive-value("gap", 20, 15, 1);
+
+            .logo {
+                @include adaptive-value("width", 77, 59, 1);
+                @include adaptive-value("height", 76, 59, 1);
+            }
+        }
+    }
+
 }

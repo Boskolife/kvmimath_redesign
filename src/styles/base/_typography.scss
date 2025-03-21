@@ -20,7 +20,9 @@ h6,
 
 h1,
 .h1 {
-    font-size: $h1-font-size;
+    @include adaptive-value("font-size", 48, 26, 1);
+    color: $blue;
+    font-weight: 700;
 }
 
 h2,
