@@ -1,3 +1,20 @@
+html {
+    scroll-behavior: smooth;
+
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: $blue;
+        border-radius: 10px;
+    }
+}
+
 .container {
     max-width: 1310px;
     width: 100%;
@@ -56,6 +73,28 @@
         min-height: 300px;
         aspect-ratio: 10 / 2;
         position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 25%;
+            height: 100%;
+            z-index: 1;
+            background: linear-gradient(270deg, rgba(255, 255, 255, 0.00) 10%, #FFF 100%);
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 25%;
+            height: 100%;
+            z-index: 1;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.00) 10%, #FFF 100%);
+        }
 
         img {
             position: absolute;
@@ -468,5 +507,208 @@
         }
 
 
+    }
+}
+
+.news {
+    @include adaptive-value("padding-top", 80, 40, 1);
+    @include adaptive-value("padding-bottom", 80, 40, 1);
+
+    .title {
+        @include adaptive-value("margin-bottom", 55, 30, 1);
+    }
+
+    .contnet {
+        display: grid;
+        grid-template: 1fr / repeat(auto-fit, minmax(330px, 1fr));
+        gap: 30px;
+
+        @include media ("<phone") {
+            grid-template: 1fr / 1fr;
+            gap: 20px;
+        }
+    }
+
+    .card {
+        border-radius: 10px;
+        border: 1px solid $grayDD;
+        overflow: hidden;
+        position: relative;
+
+        &_link {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        &_img {
+            width: 100%;
+            @include adaptive-value("height", 380, 300, 1);
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        &_text-wrap {
+            @include adaptive-value("padding-top", 25, 20, 1);
+            @include adaptive-value("padding-bottom", 25, 20, 1);
+            @include adaptive-value("padding-right", 25, 12, 1);
+            @include adaptive-value("padding-left", 25, 12, 1);
+        }
+
+        &_title {
+            @include adaptive-value("font-size", 20, 16, 1);
+            color: $black;
+            font-weight: 700;
+            letter-spacing: -0.726px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        &_text {
+            color: $black;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            font-size: 14px;
+            line-height: 140%;
+            margin-bottom: 12px;
+        }
+
+        .date {
+            color: $blue;
+            font-size: 14px;
+        }
+    }
+}
+
+.article {
+    @include adaptive-value("padding-top", 60, 35, 1);
+    @include adaptive-value("padding-bottom", 40, 25, 1);
+    max-width: 845px;
+    width: 100%;
+    margin: 0 auto;
+
+    h1 {
+        @include adaptive-value("font-size", 36, 24, 1);
+        margin-bottom: 25px
+    }
+
+    .date {
+        color: $gray;
+        @include adaptive-value("font-size", 20, 16, 1);
+        @include adaptive-value("margin-bottom", 55, 20, 1);
+        display: inline-block;
+    }
+
+    .content {
+        img {
+            width: 100%;
+            max-height: 478px;
+            object-fit: contain;
+            @include adaptive-value("margin-bottom", 55, 20, 1);
+        }
+
+        p {
+            @include adaptive-value("font-size", 18, 14, 1);
+            color: $gray;
+            line-height: 160%;
+            @include adaptive-value("margin-bottom", 35, 25, 1);
+        }
+
+        h3 {
+            @include adaptive-value("font-size", 20, 16, 1);
+            color: $blue;
+            margin-bottom: 15px;
+        }
+    }
+}
+
+.other_articles {
+    @include adaptive-value("padding-top", 40, 25, 1);
+    @include adaptive-value("padding-bottom", 80, 55, 1);
+    max-width: 845px;
+    width: 100%;
+    margin: 0 auto;
+
+    .title {
+        margin-bottom: 35px;
+    }
+
+    .contnet {
+        display: grid;
+        grid-template: 1fr / repeat(auto-fit, minmax(330px, 1fr));
+        gap: 30px;
+
+        @include media ("<phone") {
+            grid-template: 1fr / 1fr;
+            gap: 20px;
+        }
+    }
+
+    .card {
+        border-radius: 10px;
+        border: 1px solid $grayDD;
+        overflow: hidden;
+        position: relative;
+
+        &_link {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        &_img {
+            width: 100%;
+            @include adaptive-value("height", 380, 300, 1);
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        &_text-wrap {
+            @include adaptive-value("padding-top", 25, 20, 1);
+            @include adaptive-value("padding-bottom", 25, 20, 1);
+            @include adaptive-value("padding-right", 25, 12, 1);
+            @include adaptive-value("padding-left", 25, 12, 1);
+        }
+
+        &_title {
+            @include adaptive-value("font-size", 20, 16, 1);
+            color: $black;
+            font-weight: 700;
+            letter-spacing: -0.726px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        &_text {
+            color: $black;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            font-size: 14px;
+            line-height: 140%;
+            margin-bottom: 12px;
+        }
+
+        .date {
+            color: $blue;
+            font-size: 14px;
+        }
     }
 }
