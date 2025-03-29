@@ -1,17 +1,25 @@
 .header {
+
     .header_content-top {
         background-image: url(../images/header/header_bg.webp);
         background-repeat: no-repeat;
         background-size: cover;
-        padding: 10px 0;
+        padding: 19px 0;
+
+        @include media ("<phone") {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
         .container {
             display: flex;
             align-items: center;
             @include adaptive-value("gap", 55, 20, 1);
 
-            @include media ("<tablet") {
-                flex-direction: column;
+            @include media ("<desktop") {
+                justify-content: space-between;
             }
         }
 
@@ -19,6 +27,10 @@
             display: flex;
             align-items: center;
             gap: 20px;
+
+            @include media ("<desktop") {
+                display: none;
+            }
         }
 
         .logo {
@@ -27,17 +39,23 @@
         }
 
         .header_title {
-            @include adaptive-value("font-size", 42, 24, 1);
+            @include adaptive-value("font-size", 42, 16, 1);
             font-weight: 400;
             color: $white;
             text-align: center;
+            font-family: "Pacifico-Regular";
+
+            @include media ("<desktop") {
+                text-align: start;
+                font-size: 16px;
+            }
         }
 
         .ua_flag {
             width: 53px;
             height: 36px;
 
-            @include media ("<tablet") {
+            @include media ("<desktop") {
                 display: none;
             }
         }
@@ -47,23 +65,96 @@
         background-color: $blue;
         padding: 25px;
 
+        &.menu_active {
+            right: 0;
+            transition: all .3s ease 0s;
+        }
+
+        .container {
+            @include media ("<desktop") {
+                height: 100%;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                gap: 40px;
+                padding: 0;
+            }
+        }
+
+        @include media ("<desktop") {
+            position: fixed;
+            right: -100vw;
+            top: 59px;
+            width: 100%;
+            height: 92vh;
+            transition: all .3s ease 0s;
+            padding: 32px 16px 65px 16px;
+        }
+
+        @include media ("<phone") {
+            top: 80px;
+        }
+
+        .nav {
+            @include media ("<desktop") {
+                overflow: auto;
+            }
+        }
+
         .nav-menu {
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 30px;
             flex-wrap: wrap;
+
+            @include media ("<desktop") {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        .menu-item {
+            @include media ("<desktop") {
+                width: 100%;
+                padding-bottom: 15px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.30);
+            }
         }
 
         .menu_link {
             color: $whiteF5;
             font-size: 18px;
             font-weight: 400;
+
+            @include media ("<desktop") {
+                width: 100%;
+            }
+        }
+
+        .logo_wrap {
+            display: none;
+
+            @include media ("<desktop") {
+                display: flex;
+                align-items: center;
+                gap: 17px;
+            }
+
+            .logo {
+                width: 64px;
+                height: auto;
+            }
         }
     }
 
     .dropdown {
         position: relative;
+
+        @include media ("<desktop") {
+            width: 100%;
+        }
 
         .dropdown-button {
             border: none;
@@ -73,10 +164,21 @@
             gap: 10px;
             padding: 0;
 
+            @include media ("<desktop") {
+                width: 100%;
+                justify-content: space-between;
+                padding-bottom: 15px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.30);
+            }
+
             &.open {
                 img {
                     rotate: 270deg;
                     transition: all .3s ease 0s;
+
+                    @include media ("<desktop") {
+                        rotate: 90deg;
+                    }
                 }
             }
 
@@ -86,6 +188,12 @@
                 height: 16px;
                 rotate: 90deg;
                 transition: all .3s ease 0s;
+
+
+                @include media ("<desktop") {
+                    rotate: 0deg;
+                    margin-right: 10px;
+                }
             }
         }
 
@@ -98,10 +206,23 @@
             background-color: $blue;
             width: max-content;
 
+            @include media ("<desktop") {
+                position: static;
+                height: 0;
+                padding: 0;
+                margin: 0;
+                width: 100%;
+            }
+
             &.show {
                 opacity: 1;
                 visibility: visible;
                 transition: all .3s ease 0s;
+
+                @include media ("<desktop") {
+                    position: static;
+                    height: auto;
+                }
             }
         }
 
@@ -110,6 +231,71 @@
             font-size: 18px;
             padding: 16px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.30);
+
+            @include media ("<desktop") {
+                width: 100%;
+            }
+        }
+    }
+
+    .header_burger {
+        display: none;
+        min-width: 28px;
+        min-height: 21px;
+        max-width: 28px;
+        max-height: 21px;
+        position: relative;
+        cursor: pointer;
+        z-index: 3;
+
+        @include media ("<desktop") {
+            display: block;
+        }
+
+        &::after,
+        &::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: $white;
+            transition: all 0.4s ease;
+        }
+
+        span {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: $white;
+            top: 9px;
+            left: 0;
+            transition: all 0.4s ease;
+            opacity: 1;
+        }
+
+        &::after {
+            bottom: 0;
+        }
+
+        &::before {
+            top: 0;
+        }
+    }
+
+    .burger_active {
+        &::after {
+            transform: rotate(-45deg);
+            bottom: 9px;
+        }
+
+        &::before {
+            transform: rotate(45deg);
+            top: 9px;
+        }
+
+        span {
+            opacity: 0;
+            visibility: hidden;
         }
     }
 }

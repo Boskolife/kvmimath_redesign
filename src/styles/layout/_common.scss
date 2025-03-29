@@ -15,6 +15,10 @@ html {
     }
 }
 
+.body_lock {
+    overflow: hidden;
+}
+
 details {
     border-radius: 10px;
     border: 1px solid #DDE0E6;
@@ -357,6 +361,59 @@ details {
         @include adaptive-value("font-size", 20, 16, 1);
         text-decoration: underline;
     }
+
+    .tabs {
+        width: 100%;
+    }
+
+    .tab-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+
+    .tab-button {
+        border-radius: 10px;
+        border: 1px solid $grayDD;
+        background-color: $blueF7;
+        padding-top: 20px;
+        @include adaptive-value("padding-top", 20, 15, 1);
+        @include adaptive-value("padding-bottom", 20, 15, 1);
+        @include adaptive-value("padding-right", 25, 15, 1);
+        @include adaptive-value("padding-left", 25, 15, 1);
+        color: #273864;
+        @include adaptive-value("font-size", 20, 16, 1);
+        font-weight: 700;
+        width: 100%;
+        transition: all .3s ease 0s;
+
+        &.active {
+            background-color: $blue;
+            color: $white;
+            transition: all .3s ease 0s;
+        }
+
+        &:nth-child(1) {
+            border-radius: 10px 0 0 0;
+        }
+
+        &:nth-child(2) {
+            border-radius: 0;
+        }
+
+        &:nth-child(3) {
+            border-radius: 0 10px 0 0;
+        }
+    }
+
+    .tab-content {
+        display: none;
+
+        &.active {
+            display: block
+        }
+    }
 }
 
 
@@ -445,6 +502,8 @@ details {
             opacity: 0.7;
         }
     }
+
+
 }
 
 .personal {

@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Pacifico-Regular';
+    src:
+        local('Pacifico-Regular'),
+        url('../fonts/Pacifico-Regular.woff2') format('woff2'),
+        url('../fonts/Pacifico-Regular.woff') format('woff'),
+        url('../fonts/Pacifico-Regular.ttf') format('truetype'),
+        url('../fonts/Pacifico-Regular.otf') format('opentype'),
+        url('../fonts/Pacifico-Regular.eot') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+}
