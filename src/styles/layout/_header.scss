@@ -61,4 +61,55 @@
             font-weight: 400;
         }
     }
+
+    .dropdown {
+        position: relative;
+
+        .dropdown-button {
+            border: none;
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0;
+
+            &.open {
+                img {
+                    rotate: 270deg;
+                    transition: all .3s ease 0s;
+                }
+            }
+
+            img {
+                margin-top: 3px;
+                width: 9px;
+                height: 16px;
+                rotate: 90deg;
+                transition: all .3s ease 0s;
+            }
+        }
+
+        .dropdown-content {
+            opacity: 0;
+            visibility: hidden;
+            transition: all .3s ease 0s;
+            position: absolute;
+            margin-top: 15px;
+            background-color: $blue;
+            width: max-content;
+
+            &.show {
+                opacity: 1;
+                visibility: visible;
+                transition: all .3s ease 0s;
+            }
+        }
+
+        .dropdown-item {
+            color: $whiteF5;
+            font-size: 18px;
+            padding: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.30);
+        }
+    }
 }
