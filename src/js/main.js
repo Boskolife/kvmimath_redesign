@@ -39,24 +39,30 @@ function showDropDown() {
     buttons.forEach((button) => button.classList.remove('open'));
   });
 }
+
 function initTabs() {
   const buttons = document.querySelectorAll('.tab-button');
   const contents = document.querySelectorAll('.tab-content');
 
   buttons.forEach((button) => {
     button.addEventListener('click', () => {
-      const tab = button.getAttribute('data-tab');
+      const tabId = button.getAttribute('data-tab');
+      const activeTab = document.getElementById(tabId);
+
+      if (activeTab.classList.contains('active')) return;
 
       buttons.forEach((btn) => btn.classList.remove('active'));
-      contents.forEach((content) => {
-        content.classList.remove('active');
-        content.style.opacity = 0;
-      });
-
       button.classList.add('active');
-      const activeTab = document.getElementById(tab);
-      activeTab.classList.add('active');
-      fadeIn(activeTab, 300);
+
+      contents.forEach((content) => {
+        if (content.classList.contains('active')) {
+          fadeOut(content, 300, () => {
+            content.classList.remove('active');
+            activeTab.classList.add('active');
+            fadeIn(activeTab, 300);
+          });
+        }
+      });
     });
   });
 }
